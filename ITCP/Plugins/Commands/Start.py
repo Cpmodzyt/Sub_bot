@@ -71,7 +71,7 @@ async def change_to_about_task(update: Update, context: CallbackContext):
 ├ ʟɪʙʀᴀʀɪᴇs : 
 │      └ ᴘʏᴛʜᴏɴ-ᴛᴇʟᴇɢʀᴀᴍ-ʙᴏᴛ
 │  
-├ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/Itzmecp'>Itzmecp</a>      
+├ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/pamod_madubashana'>Pamod Madubashana</a>      
 │ 
 └ ᴠᴇʀsɪᴏɴ : ᴠ3.5
 """
