@@ -27,9 +27,9 @@ async def create_message_buttons_for_baiscope(search_tearm, user_id):
                 titles += "\n\n<b><blockquote>{}. {}</blockquote></b>".format(x,title.replace("සිංහල උපසිරැසි සමඟ",""))
                 buttons.append(InlineKeyboardButton(x, callback_data=f"s_bc:{post_id}:{user_id}"))
             keyboard.append(buttons)
-        text = "<blockquote><a href='https://www.baiscope.lk'><code>Results from Baiscope.lk</code></a></blockquote>" + titles
+        text = "<blockquote><a href='https://www.baiscope.lk'><code>Baiscope.lk</code></a></blockquote>" + titles
     else:
-        text = "<blockquote><a href='https://www.baiscope.lk'><code>Results from Baiscope.lk</code></a></blockquote>\n\nNo result found"
+        text = "<blockquote><a href='https://www.baiscope.lk'><code>Baiscope.lk</code></a></blockquote>\n\nNo result found"
         keyboard = []
     keyboard.append([InlineKeyboardButton("Click the buttons below to get other results", callback_data="pressed")])
     keyboard.append([InlineKeyboardButton(" Baiscope ", callback_data="pressed"),InlineKeyboardButton(" Zoom lk ", callback_data=f"sh_zlk:{user_id}"),InlineKeyboardButton("Other", callback_data=f"sh_op:{user_id}")])
@@ -125,7 +125,7 @@ async def change_to_opensubtitles_task(update: Update, context: CallbackContext)
         keyboard.append([InlineKeyboardButton(" Baiscope ", callback_data=f"b2b:{update.effective_user.id}"),InlineKeyboardButton(" Zoom lk ", callback_data=f"sh_zlk:{user_id}"),InlineKeyboardButton(" Opensubtitles ", callback_data="pressed")])
         keyboard.append([InlineKeyboardButton("Back", callback_data=f"sh_op:{update.effective_user.id}")])
         reply_markup = InlineKeyboardMarkup(keyboard)
-        text = "<blockquote><a href='https://zoom.lk'><code>Results from opensubtitles.org</code></a></blockquote>" + titles
+        text = "<blockquote><a href='https://zoom.lk'><code>opensubtitles.org</code></a></blockquote>" + titles
         await  query.edit_message_text(text=text, reply_markup=reply_markup,parse_mode='HTML',disable_web_page_preview=True)
     else:
         keyboard = keyboard_for_opensubs_lang(user_id)
@@ -210,7 +210,7 @@ async def change_to_zoomlk_task(update: Update, context: CallbackContext):
         keyboard.append([InlineKeyboardButton("Click the buttons below to get other results", callback_data="pressed")])
         keyboard.append([InlineKeyboardButton(" Baiscope ", callback_data=f"b2b:{update.effective_user.id}"),InlineKeyboardButton(" Zoom lk ", callback_data="pressed"),InlineKeyboardButton("Other", callback_data=f"sh_op:{update.effective_user.id}")])
         reply_markup = InlineKeyboardMarkup(keyboard)
-        text = "<blockquote><a href='https://zoom.lk'><code>Results from Zoom.lk</code></a></blockquote>" + titles
+        text = "<blockquote><a href='https://zoom.lk'><code>Zoom.lk</code></a></blockquote>" + titles
         await  query.edit_message_text(text=text, reply_markup=reply_markup,parse_mode='HTML',disable_web_page_preview=True)
     else:
          keyboard.append([InlineKeyboardButton(" Baiscope ", callback_data=f"b2b:{update.effective_user.id}"),InlineKeyboardButton(" Zoom lk ", callback_data="pressed"),InlineKeyboardButton("Other", callback_data=f"sh_op:{update.effective_user.id}")])
