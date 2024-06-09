@@ -1,3 +1,3 @@
 from .Config import *
-from .images import *
+from .Images import *
 # from .Mongo_db import *
