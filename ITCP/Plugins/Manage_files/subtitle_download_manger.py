@@ -27,9 +27,9 @@ async def create_message_buttons_for_baiscope(search_tearm, user_id):
                 titles += "\n\n<b><blockquote>{}. {}</blockquote></b>".format(x,title.replace("සිංහල උපසිරැසි සමඟ",""))
                 buttons.append(InlineKeyboardButton(x, callback_data=f"s_bc:{post_id}:{user_id}"))
             keyboard.append(buttons)
-        text = "<blockquote><a href='https://www.baiscope.lk'>Results from Baiscope.lk</a></blockquote>" + titles
+        text = "<blockquote><a href='https://www.baiscope.lk'><code>Results from Baiscope.lk</code></a></blockquote>" + titles
     else:
-        text = "<blockquote><a href='https://www.baiscope.lk'>Results from Baiscope.lk</a></blockquote>\n\nNo result found"
+        text = "<blockquote><a href='https://www.baiscope.lk'><code>Results from Baiscope.lk</code></a></blockquote>\n\nNo result found"
         keyboard = []
     keyboard.append([InlineKeyboardButton("Click the buttons below to get other results", callback_data="pressed")])
     keyboard.append([InlineKeyboardButton(" Baiscope ", callback_data="pressed"),InlineKeyboardButton(" Zoom lk ", callback_data=f"sh_zlk:{user_id}"),InlineKeyboardButton("Other", callback_data=f"sh_op:{user_id}")])
@@ -38,7 +38,7 @@ async def create_message_buttons_for_baiscope(search_tearm, user_id):
 async def manage_download_subtitles(update: Update, context: ContextTypes.DEFAULT_TYPE):
     asyncio.create_task(manage_download_subtitles_task(update,context))
 async def manage_download_subtitles_task(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    msg = await update.message.reply_text(text="searching...",reply_to_message_id=update.message.message_id)
+    msg = await update.message.reply_text(text="<code>Searching...</code>",reply_to_message_id=update.message.message_id)
     search_tearm = update.message.text
     user_id = update.effective_user.id
     text , keyboard = await create_message_buttons_for_baiscope(search_tearm,user_id)
@@ -56,7 +56,7 @@ async def back_to_baiscope_task(update: Update, context: CallbackContext):
         await query.answer("This is not for you",show_alert=True)
         return
     
-    await query.edit_message_text("Searching...")
+    await query.edit_message_text("<code>Searching...</code>")
     search_term = query.message.reply_to_message.text
     text , keyboard = await create_message_buttons_for_baiscope(search_term,user_id)
     await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard),parse_mode='HTML',disable_web_page_preview=True)
@@ -102,7 +102,7 @@ async def change_to_opensubtitles_task(update: Update, context: CallbackContext)
     if user_id != query.from_user.id:
         await query.answer("This is not for you",show_alert=True)
         return
-    await query.edit_message_text("Searching...")
+    await query.edit_message_text("<code>Searching...</code>")
     search_term = query.message.reply_to_message.text
     lang = data[-2]
     subtitles = get_result_from_opensubtitles(search_term,lang)
@@ -125,7 +125,7 @@ async def change_to_opensubtitles_task(update: Update, context: CallbackContext)
         keyboard.append([InlineKeyboardButton(" Baiscope ", callback_data=f"b2b:{update.effective_user.id}"),InlineKeyboardButton(" Zoom lk ", callback_data=f"sh_zlk:{user_id}"),InlineKeyboardButton(" Opensubtitles ", callback_data="pressed")])
         keyboard.append([InlineKeyboardButton("Back", callback_data=f"sh_op:{update.effective_user.id}")])
         reply_markup = InlineKeyboardMarkup(keyboard)
-        text = "<blockquote><a href='https://zoom.lk'>Results from opensubtitles.org</a></blockquote>" + titles
+        text = "<blockquote><a href='https://zoom.lk'><code>Results from opensubtitles.org</code></a></blockquote>" + titles
         await  query.edit_message_text(text=text, reply_markup=reply_markup,parse_mode='HTML',disable_web_page_preview=True)
     else:
         keyboard = keyboard_for_opensubs_lang(user_id)
@@ -189,7 +189,7 @@ async def change_to_zoomlk_task(update: Update, context: CallbackContext):
     if user_id != query.from_user.id:
         await query.answer("This is not for you",show_alert=True)
         return
-    await query.edit_message_text("Searching...")
+    await query.edit_message_text("<code>Searching...</code>")
     search_term = query.message.reply_to_message.text
     subtitles = get_result_for_search_term_from_zoomlk(search_term)
     keyboard = []
@@ -210,7 +210,7 @@ async def change_to_zoomlk_task(update: Update, context: CallbackContext):
         keyboard.append([InlineKeyboardButton("Click the buttons below to get other results", callback_data="pressed")])
         keyboard.append([InlineKeyboardButton(" Baiscope ", callback_data=f"b2b:{update.effective_user.id}"),InlineKeyboardButton(" Zoom lk ", callback_data="pressed"),InlineKeyboardButton("Other", callback_data=f"sh_op:{update.effective_user.id}")])
         reply_markup = InlineKeyboardMarkup(keyboard)
-        text = "<blockquote><a href='https://zoom.lk'>Results from Zoom.lk</a></blockquote>" + titles
+        text = "<blockquote><a href='https://zoom.lk'><code>Results from Zoom.lk</code></a></blockquote>" + titles
         await  query.edit_message_text(text=text, reply_markup=reply_markup,parse_mode='HTML',disable_web_page_preview=True)
     else:
          keyboard.append([InlineKeyboardButton(" Baiscope ", callback_data=f"b2b:{update.effective_user.id}"),InlineKeyboardButton(" Zoom lk ", callback_data="pressed"),InlineKeyboardButton("Other", callback_data=f"sh_op:{update.effective_user.id}")])
