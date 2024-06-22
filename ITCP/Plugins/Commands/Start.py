@@ -7,9 +7,9 @@ from Database import start_caption , start_img
 
 def start_keyboard(bot_username,user_id):
     keyboard = [
-        [InlineKeyboardButton("➕ Add Me To Your Chat ➕",url=f"https://t.me/{bot_username}?startgroup=true")],
-        [InlineKeyboardButton('⭕️ Search',switch_inline_query_current_chat=''),InlineKeyboardButton('🔔 Updates',url="t.me/FilmZone_Official")],
-        [InlineKeyboardButton('🌸 Status', callback_data=f'status:{user_id}'),InlineKeyboardButton('☘️ About', callback_data=f'about:{user_id}')],
+        [InlineKeyboardButton("• ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ •",url=f"https://t.me/{bot_username}?startgroup=true")],
+        [InlineKeyboardButton('• ꜱᴇᴀʀᴄʜ •',switch_inline_query_current_chat=''),InlineKeyboardButton('• ᴜᴘᴅᴀᴛᴇꜱ •',url="t.me/FilmZone_Official")],
+        [InlineKeyboardButton('• ꜱᴛᴀᴛᴜꜱ •', callback_data=f'status:{user_id}'),InlineKeyboardButton('• ᴀʙᴏᴜᴛ •', callback_data=f'about:{user_id}')],
                ]
     return keyboard
 
